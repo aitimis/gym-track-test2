@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>My Clients list:</h1>
+    <% if(clients.length > 0) { %>
+        <% clients.forEach(element => { %>
+            <div>
+                <a href="/myClients/<%= element._id %>"><%= element.name %></a>
+                <button class="btn-deleteClient" data-id="<%=element._id%>">Delete</button>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>No clients found.</p>
+    <% } %>
+
+    <h3>Add New Client</h3>
+    <form action="/myClients/addNewClient" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <a href="/logout">Logout</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
