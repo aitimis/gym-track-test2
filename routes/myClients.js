@@ -5,14 +5,15 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, myClientsController.getClients);
 
-// router.get('/:clientId', ensureAuth, myClientsController.getClientProfile)
+router.get('/:clientId', ensureAuth, myClientsController.getClientProfile)
 
-router.get('/:clientId', ensureAuth, (req, res, next) => {
-    console.log('Route hit:', req.params.clientId)
-    console.log('Route hit:', req.params)
-    next()
-}, myClientsController.getClientProfile)
+// router.get('/:clientId', ensureAuth, (req, res, next) => {
+//     console.log('Route hit:', req.params.clientId)
+//     console.log('Route hit:', req.params)
+//     next()
+// }, myClientsController.getClientProfile)
 
+router.post('/:clientId/addNewWorkout', myClientsController.addNewWorkout)
 
 router.post('/addNewClient', myClientsController.addNewClient)
 

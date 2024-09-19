@@ -4,7 +4,7 @@ const deleteButtons = document.querySelectorAll('.btn-deleteClient')
 
 
 // event listeners
-document.querySelector('#name').addEventListener('click', addNewClient())
+document.querySelector('#name').addEventListener('click', addNewClient)
 
 Array.from(deleteButtons).forEach((btn) => {
     btn.addEventListener('click', deleteClient)

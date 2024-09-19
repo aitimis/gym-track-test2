@@ -10,17 +10,20 @@
 <body>
 
     <h1><%= clientProfile.name %>'s Profile</h1>
-    <h2>Workouts</h2>
+    <h2>Workouts:</h2>
     <ul>
       <% clientProfile.workouts.forEach(workout => { %>
         <li><a href="/myClients/<%= clientProfile._id %>/workouts/<%= workout._id %>"><%= workout.date %></a></li>
       <% }) %>
     </ul>
-    <form action="/myClients/<%= clientProfile._id %>/workouts" method="POST">
-      <button type="submit">Add New Workout</button>
+    <form action="/myClients/<%= clientProfile._id %>/addNewWorkout" method="POST">
+      <input type="hidden" id="clientId" value="<%= clientProfile._id %>">
+      <label for="workoutName">Name:</label>
+      <input type="text" id="workoutName" name="name" required>
+      <button class="btn-addNewWorkout" data-client-id="clientProfile._id" type="submit">Add New Workout</button>
     </form>
     
-    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
 

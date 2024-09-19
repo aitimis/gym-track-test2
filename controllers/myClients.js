@@ -1,4 +1,5 @@
 const Clients = require('../models/Client');
+const Workouts = require('../models/Workout');
 
 module.exports = {
     // get all clients
@@ -22,12 +23,29 @@ module.exports = {
         }
     },
 
+    // submit new workout on the client's profile
+    addNewWorkout: async(req,res)=>{
+        console.log('Request Body:', req.body);
+        try{
+
+            await Workouts.create({
+                name: req.body.workoutName,
+                // clientId: req.body.clientId
+            })
+            console.log('Workout has been added!');
+            res.redirect(`/myClients/${req.body.clientId}`)
+        } catch(err) {
+            console.log(err)
+        }
+    },
+    
+
     // submit new client
     addNewClient: async(req,res)=>{
         try{
             await Clients.create({
                 name: req.body.name,
-                userId: req.user.id // trainer's Id
+                userId: req.user.clientId // trainer's Id
             })
             console.log('Client has been added!')
             res.redirect('/myClients')

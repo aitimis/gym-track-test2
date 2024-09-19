@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
 const WorkoutSchema = new mongoose.Schema({
-  date: { 
-    type: Date, 
-    default: Date.now 
-},
+  name: {
+    type: String
+  },
   clientId: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Client' 
